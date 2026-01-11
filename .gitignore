@@ -1,0 +1,49 @@
+###########################
+# BUILD OUTPUT
+###########################
+/out/
+/build/
+/dist/
+*.class
+
+###########################
+# INTELLIJ IDEA
+###########################
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+.idea/usage.statistics*
+.idea/dictionaries
+.idea/httpRequests
+.idea/caches
+.idea/modules.xml
+*.iws
+
+# Otros archivos IDE derivados
+*.iml
+
+###########################
+# LOGS & TEMP
+###########################
+*.log
+*.tmp
+
+###########################
+# SISTEMA OPERATIVO
+###########################
+.DS_Store
+Thumbs.db
+
+###########################
+# ARCHIVOS DE BACKUP
+###########################
+*.bak
+*.orig
+*.swp
+*.swo
+*~
+
+# NetBeans
+nbproject/private/
+build/
+dist/
