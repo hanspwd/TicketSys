@@ -67,8 +67,9 @@ public class UserDao implements ICrudDao<User> {
                 int userId = rs.getInt("id_person");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
+                Role role = Role.fromId(rs.getInt("id_rol"));
 
-                users.add(new User(userId, name, email));
+                users.add(User.fromDb(userId, name, email, role));
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -124,7 +125,7 @@ public class UserDao implements ICrudDao<User> {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String password = rs.getString("hash_pass");
-                Role role = Role.valueOf(rs.getString("id_rol"));
+                Role role = Role.fromId(rs.getInt("id_rol"));
 
                 return User.fromDb(idUser, name, email, password, role);
             }

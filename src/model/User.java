@@ -24,6 +24,12 @@ public class User extends Person{
         return u;
     }
 
+    public static User fromDb(int id, String name, String email, Role role) {
+        User u = new User(id, name, email, true);
+        u.role = role;
+        return u;
+    }
+
     public Role getRole() {
         return role;
     }
