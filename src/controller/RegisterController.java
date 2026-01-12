@@ -1,5 +1,6 @@
 package controller;
 
+import service.AuthService;
 import view.Alert;
 import view.RegisterPanel;
 
@@ -22,18 +23,30 @@ public class RegisterController {
             main.showMenu();
         });
         registerPanel.getBtnRegister().addActionListener(e -> {
-            doRegister();
+            try {
+                doRegister();
+            } catch (Exception ex) {
+                Alert.error("ERROR", ex.getMessage());
+            }
         });
 
     }
 
-    private void doRegister() {
+    private void doRegister() throws Exception {
         String name = registerPanel.getTxtName().getText();
         String email = registerPanel.getTxtEmail().getText();
         String password = registerPanel.getTxtPassword().getText();
         String confirmPassword = registerPanel.getTxtConfirmPassword().getText();
 
         registerFieldValidator(name, email, password, confirmPassword);
+
+        boolean ok = AuthService.register(name, email, confirmPassword);
+
+        if (ok) {
+            Alert.info("Successful operation", "Register successful");
+        } else  {
+            Alert.info("Failed operation", "Register failed, try again");
+        }
 
     }
 

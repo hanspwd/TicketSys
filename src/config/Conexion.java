@@ -1,26 +1,18 @@
 package config;
 
-import view.Alert;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Conexion {
-    Connection conectar=null;
-    String servidor = "127.0.0.1";
-    String baseDatos = "ticket_sys_db";
-    String usuario = "root";
-    String password = "";
-    public Connection conectar(){
-       try {
-          Class.forName("com.mysql.cj.jdbc.Driver");
-          /*conectar=DriverManager.getConnection("jdbc:mysql:"
-                  + "//localhost/productos", "root",""); */
-          conectar=DriverManager.getConnection("jdbc:mysql:"
-                    + "//"+ servidor + "/" + baseDatos, usuario, password);
-       } catch (Exception e) {
-           Alert.error(e.getMessage(), "ERROR");
-       }
-       return conectar;
+    private static final String SERVER = "127.0.0.1";
+    private static final String DATABASE = "ticketsys_db";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+    private static final String URL =
+            "jdbc:mysql://" + SERVER + "/" + DATABASE + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
+    public Connection connect() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }

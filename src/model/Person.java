@@ -6,18 +6,24 @@ public abstract class Person {
     private String name;
     private String email;
 
+    public Person(String name, String email) throws Exception {
+        this.setName(name);
+        this.setEmail(email);
+    }
+
     public Person(int id, String name, String email) throws Exception {
         this.id = id;
         this.setName(name);
         this.setEmail(email);
     }
 
-    // FOR DB
-    public Person(int id, String name, String email, boolean fromDb) {
+    // FOR BYPASS CONSTRUCTOR WITHOUT SETS (VALIDATORS)
+    protected Person(int id, String name, String email, boolean fromDb) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
+
 
     public int getId() {
         return id;

@@ -4,19 +4,24 @@ import model.util.Role;
 
 public class User extends Person{
 
-    private Role role =  Role.USER;
+    private Role role = Role.USER;
     private String password;
 
     public User(int id, String name, String email) throws Exception {
         super(id, name, email);
     }
 
-    // BYPASS CONSTRUCTOR WITHOUT VALIDATIONS FOR DATABASE WORK (DAO'S)
+    public User(String name, String email, String password) throws Exception {
+        super(name, email);
+        this.setPassword(password);
+    }
+
+    // BYPASS CONSTRUCTOR WITHOUT VALIDATIONS FOR DATABASE WORK (DAO'S) -> FROM PERSON
     protected User(int id, String name, String email, boolean fromDb) {
         super(id, name, email, fromDb);
     }
 
-    // BYPASS METHOD WITHOUT VALIDATIONS FOR DATABASE WORK (DAO'S)
+    // FOR GET USER (id, email, name, etc) -> DAO
     public static User fromDb(int id, String name, String email, String password, Role role) {
         User u = new User(id, name, email, true);
         u.password = password;
@@ -24,6 +29,7 @@ public class User extends Person{
         return u;
     }
 
+    // FOR LIST ALL STRUCTURE - DAO
     public static User fromDb(int id, String name, String email, Role role) {
         User u = new User(id, name, email, true);
         u.role = role;
