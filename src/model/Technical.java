@@ -1,7 +1,7 @@
 package model;
 
-import model.util.Role;
-import model.util.Specialty;
+import model.enums.Role;
+import model.enums.Specialty;
 
 public class Technical extends Person{
 

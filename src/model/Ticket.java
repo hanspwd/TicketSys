@@ -1,6 +1,6 @@
 package model;
 
-import model.util.StatusTicket;
+import model.enums.StatusTicket;
 
 import java.time.LocalDateTime;
 

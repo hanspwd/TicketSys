@@ -2,7 +2,7 @@ package dao;
 
 import config.Conexion;
 import model.User;
-import model.util.Role;
+import model.enums.Role;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

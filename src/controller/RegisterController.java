@@ -4,8 +4,8 @@ import service.AuthService;
 import view.Alert;
 import view.RegisterPanel;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import static util.FromUtils.clearRegisterInputs;
+import static validation.InputValidator.registerFieldValidator;
 
 public class RegisterController {
 
@@ -22,14 +22,19 @@ public class RegisterController {
         registerPanel.getBackBtn().addActionListener(e -> {
             main.showMenu();
         });
+
+        registerPanel.getBtnClear().addActionListener(e -> {
+            clearRegisterInputs(registerPanel);
+        });
+
         registerPanel.getBtnRegister().addActionListener(e -> {
             try {
                 doRegister();
+                clearRegisterInputs(registerPanel);
             } catch (Exception ex) {
                 Alert.error("ERROR", ex.getMessage());
             }
         });
-
     }
 
     private void doRegister() throws Exception {
@@ -47,47 +52,5 @@ public class RegisterController {
         } else  {
             Alert.info("Failed operation", "Register failed, try again");
         }
-
-    }
-
-    private boolean emailValidator(String email) {
-
-        final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-        final Pattern pattern = Pattern.compile(EMAIL_REGEX);
-
-        if(email.isBlank()) {
-            return false;
-        }
-
-        Matcher matcher = pattern.matcher(email);
-        return  matcher.matches();
-    }
-
-    private void registerFieldValidator(String name, String email, String password, String confirmPassword) {
-        if(name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            Alert.warning("WARNING", "All fields are required");
-            return;
-        }
-
-        if(name.length() < 3) {
-            Alert.warning("WARNING", "Name should be at least 3 characters");
-            return;
-        }
-
-        boolean okEmail = emailValidator(email);
-        if(!okEmail) {
-            Alert.warning("WARNING", "The email format is invalid");
-            return;
-        }
-
-        if(password.length() < 6 ||  confirmPassword.length() < 6) {
-            Alert.warning("WARNING", "Password must be at least 6 characters");
-            return;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            Alert.warning("WARNING", "Passwords do not match");
-        }
-
     }
 }

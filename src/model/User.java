@@ -1,6 +1,6 @@
 package model;
 
-import model.util.Role;
+import model.enums.Role;
 
 public class User extends Person{
 

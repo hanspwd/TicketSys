@@ -1,4 +1,4 @@
-package model.util;
+package model.enums;
 
 public enum Role {
 
