@@ -55,7 +55,7 @@ public class RegisterController {
         if (ok) {
             Alert.info("Successful operation", "Register successful" + "\n" + "You can now log in!");
         } else  {
-            Alert.warning("Failed operation", "Register failed, try again");
+            Alert.error("Failed operation", "Register failed, try again.");
         }
     }
 }
