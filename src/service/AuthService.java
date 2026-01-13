@@ -23,4 +23,17 @@ public class AuthService {
         return true;
     }
 
+    public static boolean login(String email, String password) throws Exception {
+        UserDao userDao = new UserDao();
+        User user = userDao.findByEmail(email);
+
+        if (user == null) {
+            return false;
+        }
+
+        String storedHashPasswordFromDB = user.getPassword();
+
+        return HashPassword.checkPassword(password, storedHashPasswordFromDB);
+    }
+
 }

@@ -4,7 +4,9 @@ import service.AuthService;
 import view.Alert;
 import view.RegisterPanel;
 
-import static util.FromUtils.clearRegisterInputs;
+import java.sql.SQLException;
+
+import static util.FormUtils.clearRegisterInputs;
 import static validation.InputValidator.registerFieldValidator;
 
 public class RegisterController {
@@ -31,8 +33,11 @@ public class RegisterController {
             try {
                 doRegister();
                 clearRegisterInputs(registerPanel);
-            } catch (Exception ex) {
+
+            } catch (SQLException ex) {
                 Alert.error("ERROR", ex.getMessage());
+            } catch (Exception ex) {
+                Alert.error("Failed operation", ex.getMessage());
             }
         });
     }
@@ -48,9 +53,9 @@ public class RegisterController {
         boolean ok = AuthService.register(name, email, confirmPassword);
 
         if (ok) {
-            Alert.info("Successful operation", "Register successful");
+            Alert.info("Successful operation", "Register successful" + "\n" + "You can now log in!");
         } else  {
-            Alert.info("Failed operation", "Register failed, try again");
+            Alert.warning("Failed operation", "Register failed, try again");
         }
     }
 }

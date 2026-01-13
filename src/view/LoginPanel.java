@@ -33,10 +33,10 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(1000, 630));
 
@@ -83,8 +83,8 @@ public class LoginPanel extends javax.swing.JPanel {
                         .addComponent(btnLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addComponent(btnClear))
-                    .addComponent(txtPassword)
-                    .addComponent(txtEmail))
+                    .addComponent(txtEmail)
+                    .addComponent(txtPassword))
                 .addContainerGap(392, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,7 +123,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBackBtn() {

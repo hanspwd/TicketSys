@@ -1,5 +1,6 @@
 package controller;
 
+import util.FormUtils;
 import view.*;
 
 public class MainController {
@@ -56,6 +57,9 @@ public class MainController {
     public void showMenu() {
         mainView.getCardLayout().show(mainView.getMainPanel(), "menu");
         mainView.setTitle("Ticket System (Menu)");
+
+        FormUtils.clearLoginInputs(loginPanel);
+        FormUtils.clearRegisterInputs(registerPanel);
     }
 
     public void initControllers() {
