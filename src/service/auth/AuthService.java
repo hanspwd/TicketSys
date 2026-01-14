@@ -41,7 +41,6 @@ public class AuthService {
         } else {
             throw new Exception("Password incorrect. Please try again");
         }
-
         return result;
     }
 

@@ -2,6 +2,7 @@ package controller;
 
 import service.auth.AuthService;
 import service.auth.LoginResult;
+import service.auth.TechnicalService;
 import view.Alert;
 import view.LoginPanel;
 
@@ -54,16 +55,22 @@ public class LoginController {
 
         LoginResult result = AuthService.login(email, password);
 
-        if(result.getAuthStatus() == SUCCESS) {
-            // LOGIC TO MENU (UserPanel???? || TechnicalPanel????)
-            Alert.info("Successful operation", "Login successful");
+        if (result.getAuthStatus() == SUCCESS) {
 
-            if(result.getUser().getRole().equals(USER)) {
+            if (result.getUser().getRole().equals(USER)) {
+                Alert.info("Successful operation", "Login successful");
                 main.showUserPanel();
             }
 
-            if(result.getUser().getRole().equals(TECHNICAL)) {
-                main.showTechnicalPanel();
+            if (result.getUser().getRole().equals(TECHNICAL)) {
+                if (TechnicalService.existTechnicalInDatabase(result.getUser().getId())) {
+                    Alert.info("Successful operation", "Login successful");
+                    main.showTechnicalPanel();
+                } else {
+                    Alert.error("ERROR", "Your credentials are correct and you have the Technical role" + "\n" +
+                            "but you don't actually have the permissions to operate, contact your administrator.");
+                }
+
             }
         }
 

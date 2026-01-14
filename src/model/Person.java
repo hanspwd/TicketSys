@@ -17,7 +17,12 @@ public abstract class Person {
         this.setEmail(email);
     }
 
-    // FOR BYPASS CONSTRUCTOR WITHOUT SETS (VALIDATORS)
+    // FOR BYPASS CONSTRUCTOR WITHOUT SETS (VALIDATORS) -> FOR TECHNICAL DAO
+    protected Person(int id, boolean fromDb) {
+        this.id = id;
+    }
+
+    // FOR BYPASS CONSTRUCTOR WITHOUT SETS (VALIDATORS) -> FOR USER DAO
     protected Person(int id, String name, String email, boolean fromDb) {
         this.id = id;
         this.name = name;
