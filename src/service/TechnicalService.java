@@ -1,4 +1,4 @@
-package service.auth;
+package service;
 
 import dao.TechnicalDao;
 import model.Technical;

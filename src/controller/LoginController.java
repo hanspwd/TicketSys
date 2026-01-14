@@ -2,7 +2,7 @@ package controller;
 
 import service.auth.AuthService;
 import service.auth.LoginResult;
-import service.auth.TechnicalService;
+import service.TechnicalService;
 import view.Alert;
 import view.LoginPanel;
 
