@@ -9,6 +9,8 @@ public class MainController {
     private RegisterPanel registerPanel;
     private LoginPanel loginPanel;
     private MainMenuPanel mainMenuPanel;
+    private UserPanel userPanel;
+    private TechnicalPanel technicalPanel;
 
     public MainController() {
         init();
@@ -21,11 +23,15 @@ public class MainController {
         mainMenuPanel = new MainMenuPanel();
         loginPanel = new LoginPanel();
         registerPanel = new RegisterPanel();
+        userPanel = new UserPanel();
+        technicalPanel = new TechnicalPanel();
 
         // set panels
         mainView.getMainPanel().add(mainMenuPanel, "menu");
         mainView.getMainPanel().add(loginPanel, "login");
         mainView.getMainPanel().add(registerPanel, "register");
+        mainView.getMainPanel().add(userPanel, "user");
+        mainView.getMainPanel().add(technicalPanel, "technical");
         
         // default panel
         mainView.getCardLayout().show(mainView.getMainPanel(), "menu");
@@ -52,6 +58,16 @@ public class MainController {
     public void showRegisterMenu() {
         mainView.getCardLayout().show(mainView.getMainPanel(), "register");
         mainView.setTitle("Ticket System (Register)");
+    }
+
+    public void showUserPanel() {
+        mainView.getCardLayout().show(mainView.getMainPanel(), "user");
+        mainView.setTitle("Ticket System (User)");
+    }
+
+    public void showTechnicalPanel() {
+        mainView.getCardLayout().show(mainView.getMainPanel(), "technical");
+        mainView.setTitle("Ticket System (Technical)");
     }
 
     public void showMenu() {

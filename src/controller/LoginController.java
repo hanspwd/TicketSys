@@ -1,11 +1,15 @@
 package controller;
 
-import service.AuthService;
+import service.auth.AuthService;
+import service.auth.LoginResult;
 import view.Alert;
 import view.LoginPanel;
 
 import java.sql.SQLException;
 
+import static model.enums.Role.TECHNICAL;
+import static model.enums.Role.USER;
+import static service.auth.AuthStatus.*;
 import static util.FormUtils.clearLoginInputs;
 import static validation.InputValidator.loginFieldValidator;
 
@@ -48,13 +52,20 @@ public class LoginController {
 
         loginFieldValidator(email, password);
 
-        boolean ok = AuthService.login(email, password);
+        LoginResult result = AuthService.login(email, password);
 
-        if(ok) {
-            Alert.info("Successful operation", "Login successful");
+        if(result.getAuthStatus() == SUCCESS) {
             // LOGIC TO MENU (UserPanel???? || TechnicalPanel????)
-        } else {
-            Alert.error("Failed operation", "Login failed, email or password incorrect.");
+            Alert.info("Successful operation", "Login successful");
+
+            if(result.getUser().getRole().equals(USER)) {
+                main.showUserPanel();
+            }
+
+            if(result.getUser().getRole().equals(TECHNICAL)) {
+                main.showTechnicalPanel();
+            }
         }
+
     }
 }

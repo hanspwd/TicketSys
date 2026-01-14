@@ -5,8 +5,6 @@
 package view;
 
 import java.awt.CardLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;

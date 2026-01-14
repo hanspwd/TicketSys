@@ -1,6 +1,6 @@
 package controller;
 
-import service.AuthService;
+import service.auth.AuthService;
 import view.Alert;
 import view.RegisterPanel;
 
