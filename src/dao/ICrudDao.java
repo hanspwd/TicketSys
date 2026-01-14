@@ -1,11 +1,5 @@
 package dao;
 
-/*
-DAO
-Interfaz ICrudDAO con métodos créate, readById, readAll, update, delete.
-Implementaciones para Ticket, Usuario y Técnico. -> Type
-*/
-
 import java.sql.SQLException;
 import java.util.List;
 

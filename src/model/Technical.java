@@ -20,6 +20,8 @@ public class Technical extends Person{
         this.setPassword(password);
     }
 
+    // CONSTRUCTORS FOR DB
+
     protected Technical(int id, boolean fromDb) {
         super(id, fromDb);
     }
@@ -59,7 +61,7 @@ public class Technical extends Person{
         if(specialty != null) {
             this.specialty = specialty;
         } else  {
-            throw new Exception("La especialidad no puede estar null");
+            throw new Exception("Specialty can't be null");
         }
     }
 
@@ -79,7 +81,7 @@ public class Technical extends Person{
         if(!password.isBlank()) {
             this.password = password;
         } else {
-            throw new Exception("La contraseña no puede estar vacía");
+            throw new Exception("The password can't be empty");
         }
     }
 }

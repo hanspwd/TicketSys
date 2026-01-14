@@ -1,6 +1,6 @@
 package controller;
 
-import service.auth.AuthService;
+import service.auth.RegisterService;
 import view.Alert;
 import view.RegisterPanel;
 
@@ -50,7 +50,7 @@ public class RegisterController {
 
         registerFieldValidator(name, email, password, confirmPassword);
 
-        boolean ok = AuthService.register(name, email, confirmPassword);
+        boolean ok = RegisterService.register(name, email, confirmPassword);
 
         if (ok) {
             Alert.info("Successful operation", "Register successful" + "\n" + "You can now log in!");

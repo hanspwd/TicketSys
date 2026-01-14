@@ -17,6 +17,8 @@ public abstract class Person {
         this.setEmail(email);
     }
 
+    // CONSTRUCTORS FOR DB
+
     // FOR BYPASS CONSTRUCTOR WITHOUT SETS (VALIDATORS) -> FOR TECHNICAL DAO
     protected Person(int id, boolean fromDb) {
         this.id = id;
@@ -46,7 +48,7 @@ public abstract class Person {
         if (!name.isBlank())  {
             this.name = name;
         } else  {
-            throw new Exception("El nombre no puede estar vacío");
+            throw new Exception("Name can't be empty");
         }
     }
 
@@ -58,7 +60,7 @@ public abstract class Person {
         if (!email.isBlank()) {
             this.email = email;
         } else {
-            throw new Exception("El email no puede estar vacío");
+            throw new Exception("Email can't be empty");
         }
     }
 }

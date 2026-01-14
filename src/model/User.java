@@ -16,6 +16,8 @@ public class User extends Person{
         this.setPassword(password);
     }
 
+    // CONSTRUCTORS FOR DB
+
     // BYPASS CONSTRUCTOR WITHOUT VALIDATIONS FOR DATABASE WORK (DAO'S) -> FROM PERSON
     protected User(int id, String name, String email, boolean fromDb) {
         super(id, name, email, fromDb);
@@ -44,7 +46,7 @@ public class User extends Person{
         if(!(role == null)){
             this.role = role;
         } else {
-            throw new Exception("El rol no puede ser null");
+            throw new Exception("Rol can't be null");
         }
     }
 
@@ -56,7 +58,7 @@ public class User extends Person{
         if(!password.isBlank()) {
             this.password = password;
         } else {
-            throw new Exception("La contraseña no puede estar vacía");
+            throw new Exception("The  password can't be empty");
         }
     }
 }

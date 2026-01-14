@@ -4,8 +4,8 @@ import model.User;
 
 public class LoginResult {
 
-    protected User user;
-    protected AuthStatus authStatus;
+    private User user;
+    private AuthStatus authStatus;
 
     public LoginResult() {
     }

@@ -1,8 +1,8 @@
 package controller;
 
-import service.auth.AuthService;
 import service.auth.LoginResult;
 import service.TechnicalService;
+import service.auth.LoginService;
 import view.Alert;
 import view.LoginPanel;
 
@@ -53,7 +53,7 @@ public class LoginController {
 
         loginFieldValidator(email, password);
 
-        LoginResult result = AuthService.login(email, password);
+        LoginResult result = LoginService.login(email, password);
 
         if (result.getAuthStatus() == SUCCESS) {
 
