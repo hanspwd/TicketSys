@@ -17,7 +17,15 @@
 .idea/httpRequests
 .idea/caches
 .idea/modules.xml
+.idea/libraries
 *.iws
+
+
+#
+build.xml
+manifest.mf
+TicketSys.iml
+#
 
 # Otros archivos IDE derivados
 *.iml
@@ -44,6 +52,4 @@ Thumbs.db
 *~
 
 # NetBeans
-nbproject/private/
-build/
-dist/
+nbproject
