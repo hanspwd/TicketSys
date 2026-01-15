@@ -123,9 +123,6 @@ public class TechnicalDao implements ICrudDao<Technical> {
         }
     }
 
-    // CUANDO ABRA ESTO HACER LA LÓGICA DEL CONTROLLER JUNTO CON EL SERVICE PARA SABER SI
-    // EL USUARIO LOGEADO, PUEDE O NO ACCEDER A CIERTO PANEL -> TECHNICAL PANEL
-
     @Override
     public void delete(int id) throws SQLException {
         String delete = "DELETE FROM technical WHERE id_person = ?";

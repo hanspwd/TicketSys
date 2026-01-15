@@ -58,7 +58,7 @@ public class User extends Person{
         if(!password.isBlank()) {
             this.password = password;
         } else {
-            throw new Exception("The  password can't be empty");
+            throw new Exception("The password can't be empty");
         }
     }
 }

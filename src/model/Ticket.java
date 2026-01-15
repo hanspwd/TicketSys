@@ -46,7 +46,7 @@ public final class Ticket {
         if(!title.isBlank()) {
             this.title = title;
         } else  {
-            throw new Exception("El titulo del ticket no puede estar vacío");
+            throw new Exception("Title can't be empty");
         }
     }
 
@@ -58,7 +58,7 @@ public final class Ticket {
         if(!description.isBlank()) {
             this.description = description;
         } else {
-            throw new Exception("La descripción del ticket no puede estar vacia");
+            throw new Exception("Description can't be empty");
         }
     }
 
@@ -70,7 +70,7 @@ public final class Ticket {
         if (status != null) {
             this.status = status;
         } else {
-            throw new Exception("El status del ticket no puede ser null");
+            throw new Exception("Status ticket can't be null");
         }
     }
 
@@ -86,7 +86,7 @@ public final class Ticket {
         if(user != null) {
             this.user = user;
         } else {
-            throw new Exception("El usuario a asignar al ticket no puede ser null");
+            throw new Exception("The user to be assigned to the ticket cannot be null");
         }
     }
 
@@ -99,7 +99,7 @@ public final class Ticket {
         if(assignedTechnical != null) {
             this.assignedTechnical = assignedTechnical;
         } else {
-            throw new Exception("El técnico a asignar al ticket no puede ser null");
+            throw new Exception("The technical to be assigned to the ticket cannot be null");
         }
     }
 }

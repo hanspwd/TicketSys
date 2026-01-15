@@ -2,9 +2,9 @@ package model.enums;
 
 public enum StatusTicket {
 
-    OPEN("Abierto"),
-    IN_PROGRESS("En progreso"),
-    CLOSED("Cerrado");
+    OPEN("OPEN"),
+    IN_PROGRESS("IN PROGRESS"),
+    CLOSED("CLOSED");
 
     private final String name;
 

@@ -51,7 +51,7 @@ public class InputValidator {
         boolean okEmailFormat = emailValidator(email);
 
         if (!okEmailFormat) {
-            throw new Exception("The  email format is invalid");
+            throw new Exception("The email format is invalid");
         }
 
         if (password.length() < 6) {
