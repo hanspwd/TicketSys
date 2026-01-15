@@ -3,7 +3,8 @@ package model.enums;
 public enum Role {
 
     USER(1),
-    TECHNICAL(2);
+    TECHNICAL(2),
+    ADMIN(3);
 
     private final int roleId;
 

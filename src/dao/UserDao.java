@@ -104,6 +104,32 @@ public class UserDao implements ICrudDao<User> {
         }
     }
 
+    /*
+    * Se implementara cuando este listo el panel de User, Technical y Admin.
+    *
+    public void changePassword(int id, String newPassword) throws SQLException {
+        String updatePassword = "UPDATE person SET hash_pass = ? WHERE id_person = ?";
+        try (Connection con = new Conexion().connect();) {
+            PreparedStatement ps = con.prepareStatement(updatePassword);
+            ps.setString(1, newPassword);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }
+    }
+    */
+
+
+    // Funcionalidad para admin, capacidad de cambiar rol a los usuarios.
+    public void updateRole(int id, int roleId) throws SQLException {
+        String updateRole = "UPDATE person SET id_rol = ? WHERE id_person = ?";
+        try (Connection con = new Conexion().connect();) {
+            PreparedStatement ps = con.prepareStatement(updateRole);
+            ps.setInt(1, roleId);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }
+    }
+
     @Override
     public void delete(int id) throws SQLException {
         String delete = "DELETE FROM person WHERE id_person = ?";

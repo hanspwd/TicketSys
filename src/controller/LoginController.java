@@ -57,19 +57,23 @@ public class LoginController {
 
         if (result.getAuthStatus() == SUCCESS) {
 
-            if (result.getUser().getRole().equals(USER)) {
-                Alert.info("Successful operation", "Login successful");
-                main.showUserPanel();
-            }
-
-            if (result.getUser().getRole().equals(TECHNICAL)) {
-                if (TechnicalService.existTechnicalInDatabase(result.getUser().getId())) {
+            switch (result.getUser().getRole()) {
+                case USER:
                     Alert.info("Successful operation", "Login successful");
-                    main.showTechnicalPanel();
-                } else {
-                    Alert.error("ERROR", "Your credentials are correct and you have the Technical role" + "\n" +
-                            "but you don't actually have the permissions to operate, contact your administrator.");
-                }
+                    main.showUserPanel();
+                    break;
+                case TECHNICAL:
+                    if (TechnicalService.existTechnicalInDatabase(result.getUser().getId())) {
+                        Alert.info("Successful operation", "Login successful");
+                        main.showTechnicalPanel();
+                    } else {
+                        Alert.error("ERROR", "Your credentials are correct and you have the Technical role" + "\n" +
+                                "but you don't actually have the permissions to operate, contact your administrator.");
+                    }
+                    break;
+                    case ADMIN:
+                        Alert.info("Successful operation", "Login successful, you are logged like administrator");
+                        //main.showAdminPanel();
 
             }
         }
