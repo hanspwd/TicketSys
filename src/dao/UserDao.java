@@ -38,6 +38,28 @@ public class UserDao implements ICrudDao<User> {
     public User findByName(String name) throws SQLException {
         return find("SELECT * FROM person WHERE name = ?", name);
     }
+    
+    public List<User> findByNamePattern(String query, String pattern) throws SQLException {
+        List<User> users = new ArrayList<>();
+
+        try (Connection con = new Conexion().connect();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setString(1, pattern);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                users.add(User.fromDb(
+                        rs.getInt("id_person"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        Role.fromId(rs.getInt("id_rol"))
+                ));
+            }
+        }
+        return users;
+    }
 
     @Override
     public User findByEmail(String email) throws SQLException {

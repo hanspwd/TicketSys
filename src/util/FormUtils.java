@@ -1,7 +1,7 @@
 package util;
 
-import view.LoginPanel;
-import view.RegisterPanel;
+import view.auth.LoginPanel;
+import view.auth.RegisterPanel;
 
 public class FormUtils {
 

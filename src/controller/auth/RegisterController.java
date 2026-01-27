@@ -1,8 +1,9 @@
-package controller;
+package controller.auth;
 
+import controller.MainController;
 import service.auth.RegisterService;
-import view.Alert;
-import view.RegisterPanel;
+import view.common.Alert;
+import view.auth.RegisterPanel;
 
 import java.sql.SQLException;
 

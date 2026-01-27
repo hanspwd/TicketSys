@@ -1,4 +1,4 @@
-package service;
+package service.users;
 
 import dao.TechnicalDao;
 import model.Technical;
@@ -10,4 +10,5 @@ public class TechnicalService {
         Technical technical = technicalDao.readById(id);
         return technical != null;
     }
+
 }

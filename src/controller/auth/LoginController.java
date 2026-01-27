@@ -1,15 +1,15 @@
-package controller;
+package controller.auth;
 
+import controller.MainController;
+import model.enums.Role;
 import service.auth.LoginResult;
-import service.TechnicalService;
+import service.users.TechnicalService;
 import service.auth.LoginService;
-import view.Alert;
-import view.LoginPanel;
+import view.common.Alert;
+import view.auth.LoginPanel;
 
 import java.sql.SQLException;
 
-import static model.enums.Role.TECHNICAL;
-import static model.enums.Role.USER;
 import static service.auth.AuthStatus.*;
 import static util.FormUtils.clearLoginInputs;
 import static validation.InputValidator.loginFieldValidator;
@@ -51,9 +51,19 @@ public class LoginController {
         String email = loginPanel.getTxtEmail().getText();
         String password = loginPanel.getTxtPassword().getText();
 
-        loginFieldValidator(email, password);
+        // Validación mejorada para campos vacíos, nulos o con espacios
+        if (email == null || email.trim().isEmpty()) {
+            throw new Exception("Email is required");
+        }
+        
+        if (password == null || password.trim().isEmpty()) {
+            throw new Exception("Password is required");
+        }
 
-        LoginResult result = LoginService.login(email, password);
+        // Validar formato de email y longitud de contraseña
+        loginFieldValidator(email.trim(), password.trim());
+
+        LoginResult result = LoginService.login(email.trim(), password.trim());
 
         if (result.getAuthStatus() == SUCCESS) {
 
@@ -67,16 +77,15 @@ public class LoginController {
                         Alert.info("Successful operation", "Login successful");
                         main.showTechnicalPanel();
                     } else {
-                        Alert.error("ERROR", "Your credentials are correct and you have the Technical role" + "\n" +
-                                "but you don't actually have the permissions to operate, contact your administrator.");
+                        Alert.error("ERROR", "Your credentials are correct and you have Technical role" + "\n" +
+                                "but you don't actually have permissions to operate, contact your administrator.");
                     }
                     break;
-                    case ADMIN:
-                        Alert.info("Successful operation", "Login successful, you are logged like administrator");
-                        //main.showAdminPanel();
-
+                case ADMIN:
+                    Alert.info("Successful operation", "Login successful, you are logged like administrator");
+                    main.showAdminPanel();
+                    break;
             }
         }
-
     }
 }

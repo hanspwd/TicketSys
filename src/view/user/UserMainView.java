@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package view.user;
+
+import javax.swing.JButton;
 
 /**
  *
  * @author Hans
  */
-public class TechnicalPanel extends javax.swing.JPanel {
+public class UserMainView extends javax.swing.JPanel {
 
     /**
      * Creates new form UserPanel
      */
-    public TechnicalPanel() {
+    public UserMainView() {
         initComponents();
     }
 
@@ -27,30 +29,53 @@ public class TechnicalPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnSignOut = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1000, 630));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Technical panel");
+        jLabel1.setText("User panel");
+
+        btnSignOut.setBackground(new java.awt.Color(255, 255, 255));
+        btnSignOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSignOut.setForeground(new java.awt.Color(0, 0, 0));
+        btnSignOut.setText("Sign Out");
+        btnSignOut.setBorder(null);
+        btnSignOut.setBorderPainted(false);
+        btnSignOut.setFocusPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSignOut)
+                .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(119, 119, 119))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addComponent(btnSignOut)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addGap(259, 259, 259))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnSignOut;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnSignOut() {
+        return btnSignOut;
+    }
 }
